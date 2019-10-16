@@ -1,5 +1,6 @@
 package com.mcornel.ecommerce
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -27,6 +28,11 @@ class MainActivity : AppCompatActivity() {
         rbBlue.setOnClickListener {
 //            screen.setBackgroundColor(Color.parseColor("#ffOO00ff")) todo figure out why this format fails
             screen.setBackgroundColor(Color.rgb(0,0,255))
+        }
+
+        btnSecondAct.setOnClickListener {
+            var intent = Intent(this, SecondActivity::class.java)
+            startActivity(intent)
         }
     }
 }
