@@ -12,11 +12,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        btnAdd.setOnClickListener {
+
+        fun calculate(): String {
             var num1 = txtNum1.text.toString().toFloat()
             var num2 = txtNum2.text.toString().toFloat()
             var sum  = num1 + num2
-            Toast.makeText(this, "$num1 + $num2 = $sum", Toast.LENGTH_LONG).show()
+            return "$num1 + $num2 = $sum"
+        }
+
+        btnAdd.setOnClickListener {
+
+            Toast.makeText(this, calculate(), Toast.LENGTH_LONG).show()
 
         }
         rbRed.setOnClickListener {
@@ -32,6 +38,7 @@ class MainActivity : AppCompatActivity() {
 
         btnSecondAct.setOnClickListener {
             var intent = Intent(this, SecondActivity::class.java)
+            intent.putExtra("result", calculate())
             startActivity(intent)
         }
     }
