@@ -3,6 +3,12 @@ package com.mcornel.ecommerce
 import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.android.volley.Request
+import com.android.volley.RequestQueue
+import com.android.volley.Response
+import com.android.volley.VolleyError
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
 import kotlinx.android.synthetic.main.activity_second.*
 
 class SecondActivity : AppCompatActivity() {
@@ -10,6 +16,8 @@ class SecondActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
+
+        var siteAddress = getSiteUrl()
 
         var resultString = intent.getStringExtra("result")
         txtResult.text = resultString
@@ -27,6 +35,24 @@ class SecondActivity : AppCompatActivity() {
         btnReadFile.setOnClickListener {
             var sharedPref = getSharedPreferences("my_calculations", Context.MODE_PRIVATE)  // creates file
             txtRead.text = sharedPref.getString("result", "Nothing found")       // use shared preference to read file or return default
+        }
+
+        btnGetProduct.setOnClickListener {
+            var product_id = edProductId.text.toString()
+            var url = "$siteAddress/ecom/get_one.php?table=products&id=$product_id"
+            var requestQ = Volley.newRequestQueue(this)
+
+            // Json Object request with 5 params method, url, jsonrequest, success action and error action
+            var jobREquest =JsonObjectRequest(Request.Method.GET, url, null,
+                Response.Listener { response ->
+                    txtProductName.text = response.getString("name")
+                    txtProductDescription.text = response.getString("description")
+                    txtProductPrice.text = response.getString("price")
+                },
+                Response.ErrorListener { error ->
+                    txtProductDescription.text = error.message
+                })
+            requestQ.add(jobREquest)
         }
     }
 }

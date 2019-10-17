@@ -16,14 +16,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        val env = "local"
-//        var env = "live"
-        var siteAddress: String = "https://mcornel.com"
-        if (env == "local") {
-            siteAddress = "http://192.168.100.8/mcornel.com"
-        }
-        var url: String = "$siteAddress/ecom/"
+        var siteAddress = getSiteUrl()
 
         fun calculate(): String {
             var num1 = txtNum1.text.toString().toFloat()
@@ -57,8 +50,9 @@ class MainActivity : AppCompatActivity() {
         btnGetServerText.setOnClickListener {
             var requestQ = Volley.newRequestQueue(this)    // instance of volley request
 
-            // making the request by specifying method, url, action for success and action for error
-            var request = StringRequest(Request.Method.GET, url,
+            var url = "$siteAddress/ecom/"
+            // String request with 4 params: method, url, action for success and action for error
+            var strRequest = StringRequest(Request.Method.GET, url,
                 Response.Listener { response ->
                     txtWelcome.text = response
 
@@ -68,7 +62,7 @@ class MainActivity : AppCompatActivity() {
                 })
 
             // make connection between the request and the result
-            requestQ.add(request)
+            requestQ.add(strRequest)
         }
     }
 }
