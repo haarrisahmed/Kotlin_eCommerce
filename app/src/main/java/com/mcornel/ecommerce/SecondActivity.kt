@@ -1,6 +1,7 @@
 package com.mcornel.ecommerce
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
@@ -53,6 +54,13 @@ class SecondActivity : AppCompatActivity() {
                     txtProductDescription.text = error.message
                 })
             requestQ.add(jobREquest)
+        }
+
+        btnGetAll.setOnClickListener {
+            var table = txtTable.text.toString()
+            var intent = Intent(this, AllItemsAct::class.java)
+            intent.putExtra("table", table)
+            startActivity(intent)
         }
     }
 }
