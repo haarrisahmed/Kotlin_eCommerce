@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">eCommerce</string>
+    <string name="query_results">QUERY RESULTS</string>
+    <string name="second_activity">Second Activity</string>
+    <string name="your_name">Your name</string>
+    <string name="save">Save</string>
+    <string name="textview">TextView</string>
+    <string name="read_from_file">Read From File</string>
+    <string name="product_id">product id</string>
+    <string name="get_product">Get Product</string>
+    <string name="table">Table</string>
+    <string name="get_all">Get All</string>
 </resources>
