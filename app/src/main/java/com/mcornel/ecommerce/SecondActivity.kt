@@ -3,6 +3,7 @@ package com.mcornel.ecommerce
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.RequestQueue
@@ -10,6 +11,7 @@ import com.android.volley.Response
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_second.*
 
 class SecondActivity : AppCompatActivity() {
@@ -49,6 +51,10 @@ class SecondActivity : AppCompatActivity() {
                     txtProductName.text = response.getString("name")
                     txtProductDescription.text = response.getString("description")
                     txtProductPrice.text = response.getString("price")
+                    var productImage:String = response.getString("photo_url")
+                    var imgurl = productImage.replace("http://localhost/mcornel.com",siteAddress)
+                    // use picasso to place the image
+                    Picasso.with(this).load(imgurl).into(ivProductImage)
                 },
                 Response.ErrorListener { error ->
                     txtProductDescription.text = error.message
