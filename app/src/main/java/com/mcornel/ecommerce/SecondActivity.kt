@@ -70,5 +70,12 @@ class SecondActivity : AppCompatActivity() {
             intent.putExtra("table", table)
             startActivity(intent)
         }
+
+        btnAllProducts.setOnClickListener {
+            val intent = Intent(this, ProductActivity::class.java)
+            startActivity(intent)
+        }
+
+
     }
 }

@@ -83,10 +83,9 @@
         android:id="@+id/btnGetProduct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
         android:text="@string/get_product"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/edProductId"
         app:layout_constraintTop_toBottomOf="@+id/edProductId" />
 
     <LinearLayout
@@ -103,7 +102,7 @@
             android:id="@+id/ivProductImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="5"
+            android:layout_weight="3"
             tools:srcCompat="@tools:sample/avatars" />
 
         <LinearLayout
@@ -119,19 +118,21 @@
                 android:id="@+id/txtProductName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/txtProductDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="16sp"
                 android:textStyle="italic" />
 
             <TextView
                 android:id="@+id/txtProductPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
@@ -158,4 +159,13 @@
         android:text="@string/get_all"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+    <Button
+        android:id="@+id/btnAllProducts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/all_products"
+        app:layout_constraintBottom_toBottomOf="@+id/btnGetProduct"
+        app:layout_constraintEnd_toEndOf="@+id/edProductId"
+        app:layout_constraintTop_toTopOf="@+id/btnGetProduct" />
 </androidx.constraintlayout.widget.ConstraintLayout>
