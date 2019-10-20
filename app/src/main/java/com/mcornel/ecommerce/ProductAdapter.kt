@@ -14,16 +14,20 @@ import androidx.recyclerview.widget.RecyclerView
 
 class ProductAdapter(var context:Context, var productList:ArrayList<Product>):RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+
     class ProductHolder(view:View):RecyclerView.ViewHolder(view) {
         var tvProductName = view.findViewById<TextView>(R.id.tvProductName)
         var tvProductDesc = view.findViewById<TextView>(R.id.tvProductDescription)
         var tvProductPrice = view.findViewById<TextView>(R.id.tvProductPrize)
         var ivPoductImage = view.findViewById<ImageView>(R.id.ivProductImage)
+        val siteAddress = getSiteUrl()
 
         fun bindData(name:String, desc:String, price:Double, photoUrl:String) {
             tvProductName.text = name
             tvProductDesc.text = desc
             tvProductPrice.text = price.toString()
+            DownLoadImageTask(ivPoductImage)
+                .execute(photoUrl.replace("http://localhost/mcornel.com", siteAddress))
             ivPoductImage.setImageURI(photoUrl.toUri())
         }
     }
