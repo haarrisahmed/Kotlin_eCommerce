@@ -52,6 +52,7 @@ class SignupAct : AppCompatActivity() {
             }
             else {
 //                Do somthing when they don't match
+                Toast.makeText(this, "Password did not match.", Toast.LENGTH_LONG).show()
 
             }
 
