@@ -8,22 +8,22 @@
     tools:context=".AllItemsAct">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvTableName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/query_results"
+        android:text=""
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-<!--    todo make this scrollable for long list-->
     <TextView
         android:id="@+id/tvResultList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:scrollbars="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTableName" />
 </androidx.constraintlayout.widget.ConstraintLayout>
