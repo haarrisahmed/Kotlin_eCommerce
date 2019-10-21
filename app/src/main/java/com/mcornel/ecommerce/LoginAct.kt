@@ -1,9 +1,9 @@
 package com.mcornel.ecommerce
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
@@ -30,13 +30,15 @@ class LoginAct : AppCompatActivity() {
             val loginRequest = object : StringRequest(
                 Method.POST, url,
                 Response.Listener { res ->
-                    var message: String
-                    if(res == 1.toString()) {
-                        message = "Successfully Login"
+                    if (res == "1") {
+                        Toast.makeText(this, "Successfully Login", Toast.LENGTH_LONG).show()
+                        UserInfo.mobile = phone
+                        var intent = Intent(this, HomeAct::class.java)
+                        intent.putExtra("name", phone)
+                        startActivity(intent)
                     } else {
-                        message = "Not Login"
+                        Toast.makeText(this, "Not Login", Toast.LENGTH_LONG).show()
                     }
-                    Toast.makeText(this, message, Toast.LENGTH_LONG).show()
                 },
                 Response.ErrorListener { err ->
                     Toast.makeText(this, "Error: ${err.message}", Toast.LENGTH_LONG).show()
@@ -48,7 +50,6 @@ class LoginAct : AppCompatActivity() {
                     parcel["password"] = password
                     return parcel
                 }
-
             }
             requestQ.add(loginRequest)
         }

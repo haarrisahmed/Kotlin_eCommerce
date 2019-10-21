@@ -1,5 +1,6 @@
 package com.mcornel.ecommerce
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -31,7 +32,14 @@ class SignupAct : AppCompatActivity() {
                 val signupRequest = object:StringRequest(Method.POST, url,
                     Response.Listener { res ->
 //                        stuff to do on success
-                        Toast.makeText(this, res, Toast.LENGTH_LONG).show()
+                        if(res == "0") {
+                            Toast.makeText(this, "Mobile number already in use.", Toast.LENGTH_LONG).show()
+                        }
+                        else {
+                            Toast.makeText(this, "Successful signup", Toast.LENGTH_LONG).show()
+                            UserInfo.mobile = phone
+                            startActivity(Intent(this, HomeAct::class.java))
+                        }
                     },
                     Response.ErrorListener { err ->
 //                        stuff for error

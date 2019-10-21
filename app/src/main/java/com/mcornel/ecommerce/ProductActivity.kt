@@ -45,9 +45,5 @@ class ProductActivity : AppCompatActivity() {
             })
 
         requestQ.add(jarRequest)
-
-
-
-
     }
 }
