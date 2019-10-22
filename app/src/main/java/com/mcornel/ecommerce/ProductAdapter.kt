@@ -7,28 +7,28 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 
 //Consider this as a controller in web
 
 class ProductAdapter(var context:Context, var productList:ArrayList<Product>):RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
-    class ProductHolder(view:View):RecyclerView.ViewHolder(view) {
-        var tvProductName = view.findViewById<TextView>(R.id.tvProductName)
-        var tvProductDesc = view.findViewById<TextView>(R.id.tvProductDescription)
-        var tvProductPrice = view.findViewById<TextView>(R.id.tvProductPrize)
-        var ivPoductImage = view.findViewById<ImageView>(R.id.ivProductImage)
+    class ProductHolder(itemView:View):RecyclerView.ViewHolder(itemView) {
+        var tvProductName = itemView.findViewById<TextView>(R.id.tvProductName)
+        var tvProductDesc = itemView.findViewById<TextView>(R.id.tvProductDescription)
+        var tvProductPrice = itemView.findViewById<TextView>(R.id.tvProductPrize)
+        var ivPoductImage = itemView.findViewById<ImageView>(R.id.ivProductImage)
         val siteAddress = getSiteUrl()
 
         fun bindData(name:String, desc:String, price:Double, photoUrl:String) {
             tvProductName.text = name
             tvProductDesc.text = desc
             tvProductPrice.text = price.toString()
-            DownLoadImageTask(ivPoductImage)
-                .execute(photoUrl.replace("http://localhost/mcornel.com", siteAddress))
-            ivPoductImage.setImageURI(photoUrl.toUri())
+            Picasso.with(itemView.context).load(photoUrl.replace("http://localhost/mcornel.com", siteAddress)).into(ivPoductImage)
         }
     }
 
