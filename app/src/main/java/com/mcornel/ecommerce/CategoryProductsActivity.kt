@@ -1,7 +1,7 @@
 package com.mcornel.ecommerce
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_category_products.*
 import org.json.JSONObject
@@ -18,14 +18,21 @@ class CategoryProductsActivity : AppCompatActivity() {
         tvCategoryName.text = jsonCategory.getString("name")
         val jarProducts = jsonCategory.getJSONArray("products")
         val products = ArrayList<Product>()
-        for (x in 0 until jarProducts.length()){
+        for (x in 0 until jarProducts.length()) {
             val jsonObject = jarProducts.getJSONObject(x)
             val name = jsonObject.getString("name")
             val desc = jsonObject.getString("description")
             val price = jsonObject.getDouble("price")
             val photoUrl = jsonObject.getString("photo_url")
 
-            products.add(Product(name = name, description = desc, price = price, photoUrl = photoUrl))
+            products.add(
+                Product(
+                    name = name,
+                    description = desc,
+                    price = price,
+                    photoUrl = photoUrl
+                )
+            )
         }
         val adapter = ProductAdapter(this, products)
         rvProducts.layoutManager = LinearLayoutManager(this)

@@ -1,10 +1,10 @@
 package com.mcornel.ecommerce
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
@@ -54,9 +54,7 @@ class HomeAct : AppCompatActivity() {
             }
 
             val intent = Intent(this, CategoryProductsActivity::class.java)
-//            intent.putExtra("products", productsArrayList)
             intent.putExtra("category", category.toString())
-//            intent.putExtra("category_name", category.getString("name"))
             Toast.makeText(this, categories[position].getString("name"), Toast.LENGTH_LONG).show()
             startActivity(intent)
         }
