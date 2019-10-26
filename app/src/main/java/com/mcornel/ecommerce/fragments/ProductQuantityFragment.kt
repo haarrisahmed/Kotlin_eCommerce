@@ -1,6 +1,7 @@
 package com.mcornel.ecommerce.fragments
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.mcornel.ecommerce.R
+import com.mcornel.ecommerce.activities.CartActivity
 import com.mcornel.ecommerce.getSiteUrl
 import com.mcornel.ecommerce.models.OrderInfo
 import com.mcornel.ecommerce.models.UserInfo
@@ -48,6 +50,7 @@ class ProductQuantityFragment :
                     if (true) {
                         Toast.makeText(view.context, res, Toast.LENGTH_LONG).show()
 //                        todo figure out how to dismiss the fragment. Meanwhile go to another activity
+                        startActivity(Intent(view.context, CartActivity::class.java))
                     } else {
                         Toast.makeText(view.context, "Not Added", Toast.LENGTH_LONG).show()
                     }
