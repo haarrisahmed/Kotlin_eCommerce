@@ -3,7 +3,7 @@ package com.mcornel.ecommerce
 fun getSiteUrl(): String {
 
     val env = "local"
-//        var env = "live"
+//    val env = "live"
     var siteAddress = "https://mcornel.com"
     if (env == "local") {
         siteAddress = "http://${setLocalIp()}/mcornel.com"
@@ -12,6 +12,6 @@ fun getSiteUrl(): String {
 }
 
 fun setLocalIp(): String {
-//    return "192.168.43.4"
-    return "192.168.100.8"
+    return "192.168.43.4"
+//    return "192.168.100.8"
 }

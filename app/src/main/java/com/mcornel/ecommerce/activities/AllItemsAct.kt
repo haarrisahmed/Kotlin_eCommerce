@@ -1,4 +1,4 @@
-package com.mcornel.ecommerce
+package com.mcornel.ecommerce.activities
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +9,8 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
+import com.mcornel.ecommerce.R
+import com.mcornel.ecommerce.getSiteUrl
 import kotlinx.android.synthetic.main.activity_all_items.*
 import org.json.JSONObject
 

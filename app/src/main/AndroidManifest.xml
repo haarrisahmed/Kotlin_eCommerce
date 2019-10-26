@@ -12,20 +12,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CategoryProductsActivity"></activity>
-        <activity android:name=".HomeAct" />
-        <activity android:name=".SignupAct" />
-        <activity android:name=".LoginAct">
+        <activity android:name=".activities.CategoryProductsActivity"></activity>
+        <activity android:name=".activities.HomeAct" />
+        <activity android:name=".activities.SignupAct" />
+        <activity android:name=".activities.LoginAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ProductActivity" />
-        <activity android:name=".AllItemsAct" />
-        <activity android:name=".SecondActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".activities.ProductActivity" />
+        <activity android:name=".activities.AllItemsAct" />
+        <activity android:name=".activities.SecondActivity" />
+        <activity android:name=".activities.MainActivity" />
     </application>
 
 </manifest>

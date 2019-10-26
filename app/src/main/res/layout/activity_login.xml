@@ -6,7 +6,7 @@
     android:background="@color/activity_bg"
     android:orientation="vertical"
     android:padding="10dp"
-    tools:context=".LoginAct">
+    tools:context=".activities.LoginAct">
 
 
     <com.google.android.material.textfield.TextInputLayout

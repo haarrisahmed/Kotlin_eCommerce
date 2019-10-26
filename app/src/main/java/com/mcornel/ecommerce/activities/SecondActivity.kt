@@ -1,4 +1,4 @@
-package com.mcornel.ecommerce
+package com.mcornel.ecommerce.activities
 
 import android.content.Context
 import android.content.Intent
@@ -8,6 +8,8 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.mcornel.ecommerce.R
+import com.mcornel.ecommerce.getSiteUrl
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_second.*
 

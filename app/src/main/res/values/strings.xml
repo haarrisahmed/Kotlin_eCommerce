@@ -11,4 +11,7 @@
     <string name="table">Table</string>
     <string name="get_all">Get All</string>
     <string name="all_products">All Products</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

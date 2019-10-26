@@ -1,4 +1,4 @@
-package com.mcornel.ecommerce
+package com.mcornel.ecommerce.activities
 
 import android.content.Intent
 import android.graphics.Color
@@ -9,6 +9,8 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.mcornel.ecommerce.R
+import com.mcornel.ecommerce.getSiteUrl
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

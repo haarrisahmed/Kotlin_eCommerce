@@ -1,15 +1,17 @@
-package com.mcornel.ecommerce
+package com.mcornel.ecommerce.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
-import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
-import com.squareup.picasso.Picasso
+import com.mcornel.ecommerce.models.Product
+import com.mcornel.ecommerce.R
+import com.mcornel.ecommerce.adapters.ProductAdapter
+import com.mcornel.ecommerce.getSiteUrl
 import kotlinx.android.synthetic.main.activity_product.*
 
 class ProductActivity : AppCompatActivity() {
@@ -27,14 +29,18 @@ class ProductActivity : AppCompatActivity() {
         val jarRequest = JsonArrayRequest(Request.Method.GET, url, null,
             Response.Listener { response ->
                 val products = ArrayList<Product>()
-                for (x in 0 until response.length()){
+                for (x in 0 until response.length()) {
                     val jsonObject = response.getJSONObject(x)
-                    val name = jsonObject.getString("name")
-                    val desc = jsonObject.getString("description")
-                    val price = jsonObject.getDouble("price")
-                    val photoUrl = jsonObject.getString("photo_url")
 
-                    products.add(Product(name = name, description = desc, price = price, photoUrl = photoUrl))
+                    products.add(
+                        Product(
+                            name = jsonObject.getString("name"),
+                            description = jsonObject.getString("description"),
+                            price = jsonObject.getDouble("price"),
+                            photoUrl = jsonObject.getString("photo_url"),
+                            id = jsonObject.getInt("id")
+                        )
+                    )
                 }
                 val adapter = ProductAdapter(this, products)
                 rvProducts.layoutManager = LinearLayoutManager(this)

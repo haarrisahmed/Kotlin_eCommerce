@@ -1,14 +1,17 @@
-package com.mcornel.ecommerce
+package com.mcornel.ecommerce.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.mcornel.ecommerce.R
+import com.mcornel.ecommerce.models.UserInfo
+import com.mcornel.ecommerce.getSiteUrl
 import kotlinx.android.synthetic.main.activity_signup.*
+import org.json.JSONObject
 
 class SignupAct : AppCompatActivity() {
 
@@ -37,7 +40,11 @@ class SignupAct : AppCompatActivity() {
                         }
                         else {
                             Toast.makeText(this, "Successful signup", Toast.LENGTH_LONG).show()
-                            UserInfo.mobile = phone
+                            val user = JSONObject(res)
+                            UserInfo.mobile = user.getString("mobile")
+                            UserInfo.id = user.getInt("id")
+                            UserInfo.json = user
+
                             startActivity(Intent(this, HomeAct::class.java))
                         }
                     },
